@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>ccih-base-protobuf-parent</artifactId>
+        <groupId>com.ccih.base.protobuf.parent</groupId>
+        <version>7.1.0050-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>ccih-base-protobuf</artifactId>
+    <packaging>jar</packaging>
+
+    <name>ccih-base-protobuf</name>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>retrieve resources</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.ccih.base.protobuf.parent</groupId>
+                                    <artifactId>ccih-base-protobuf-common</artifactId>
+                                    <version>${project.version}</version>
+                                    <type>jar</type>
+                                    <includes>**/*.proto,**/*.exe</includes>
+                                    <outputDirectory>target/classes</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ccih.base.protobuf.parent</groupId>
+            <artifactId>ccih-base-protobuf-plugin</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ccih.base.protobuf.parent</groupId>
+            <artifactId>ccih-base-protobuf-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>

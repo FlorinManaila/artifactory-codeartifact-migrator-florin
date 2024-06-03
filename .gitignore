@@ -1,3 +1,5 @@
 dist/**
 build/**
 artifactory_codeartifact_migrator.egg-info/**
+artifactory-codeartifact-migrator.log
+env.sh

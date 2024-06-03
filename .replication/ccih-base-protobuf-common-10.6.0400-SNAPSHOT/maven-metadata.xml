@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>com.ccih.base.protobuf.parent</groupId>
+  <artifactId>ccih-base-protobuf-common</artifactId>
+  <version>10.6.0400-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20160209.223414</timestamp>
+      <buildNumber>31</buildNumber>
+    </snapshot>
+    <lastUpdated>20180306205512</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <classifier>sources</classifier>
+        <extension>jar</extension>
+        <value>10.6.0400-20160209.223414-31</value>
+        <updated>20160209223414</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>10.6.0400-20160209.223414-31</value>
+        <updated>20160209223414</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <classifier>tests</classifier>
+        <extension>jar</extension>
+        <value>10.6.0400-20160209.223414-31</value>
+        <updated>20160209223414</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>10.6.0400-20160209.223414-31</value>
+        <updated>20160209223414</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>

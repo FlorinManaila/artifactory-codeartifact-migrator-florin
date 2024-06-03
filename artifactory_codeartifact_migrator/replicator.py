@@ -684,7 +684,7 @@ def replicate(args):
 
   # This checks codeartifact access and gives us a list of repos to examine
   codeartifact_repos = codeartifact.codeartifact_list_repositories(client)
-  logger.debug(f"Codeartifact repo list:\n{codeartifact_repos}")
+  logger.info(f"Codeartifact repo list:\n{codeartifact_repos}")
 
   # Update the repos list
   # jsondata_update = artifactory.artifactory_http_post_call(args, '/api/storageinfo/calculate')

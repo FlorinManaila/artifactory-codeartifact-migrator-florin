@@ -39,21 +39,50 @@ def mocked_requests_get(*args, **kwargs):
   return MockResponse()
 
 def codeartifact_list_repositories(client):
-  """
-  codeartifact_list_repositories fetches all repositories associated with
-  codeartifact.
+  repositories = []
+  next_token = None
 
-  :param client: api client object for aws codeartifact
-  :return: response http object
-  """
-  success = True
-  response = client.list_repositories()
-  if not response.get('ResponseMetadata', {}).get('HTTPStatusCode') or response.get('ResponseMetadata', {}).get('HTTPStatusCode', 0) != 200:
-    success = False
-  if not success:
-    logger.critical(f"Failure listing repositories:\n {response}")
-    sys.exit(1)
+  while True:
+    try:
+      if next_token:
+        response = client.list_repositories(nextToken=next_token)
+      else:
+        response = client.list_repositories()
+
+      # Ensure the response structure is as expected
+      logger.info (f"Response is: {response}")
+      if 'repositories' in response:
+        repositories.extend(response['repositories'])
+      else:
+        logger.info("Unexpected response structure: 'repositories' key not found")
+        break
+
+      next_token = response.get('nextToken')
+      logger.info (f"next_token is: {next_token}")
+      if not next_token:
+        break
+    except Exception as e:
+      logger.info(f"An error occurred: {e}")
+      break
+  logger.info(f"repositories are: {repositories}")
   return response
+
+# def codeartifact_list_repositories(client):
+#   """
+#   codeartifact_list_repositories fetches all repositories associated with
+#   codeartifact.
+
+#   :param client: api client object for aws codeartifact
+#   :return: response http object
+#   """
+#   success = True
+#   response = client.list_repositories()
+#   if not response.get('ResponseMetadata', {}).get('HTTPStatusCode') or response.get('ResponseMetadata', {}).get('HTTPStatusCode', 0) != 200:
+#     success = False
+#   if not success:
+#     logger.critical(f"Failure listing repositories:\n {response}")
+#     sys.exit(1)
+#   return response
 
 def codeartifact_check_package_version(args, client, package_dict):
   """
