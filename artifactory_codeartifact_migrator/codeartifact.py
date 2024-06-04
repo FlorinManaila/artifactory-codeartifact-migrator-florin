@@ -50,7 +50,7 @@ def codeartifact_list_repositories(client):
         response = client.list_repositories()
 
       # Ensure the response structure is as expected
-      logger.info (f"Response is: {response}")
+      #logger.info (f"Response is: {response}")
       if 'repositories' in response:
         repositories.extend(response['repositories'])
       else:
@@ -58,13 +58,15 @@ def codeartifact_list_repositories(client):
         break
 
       next_token = response.get('nextToken')
-      logger.info (f"next_token is: {next_token}")
+      #logger.info (f"next_token is: {next_token}")
       if not next_token:
         break
     except Exception as e:
       logger.info(f"An error occurred: {e}")
       break
-  logger.info(f"repositories are: {repositories}")
+  response["repositories"] = repositories
+  #logger.info(f"repositories are: {repositories}")
+  #logger.info(f"The response is: {response}")
   return response
 
 # def codeartifact_list_repositories(client):
@@ -169,6 +171,7 @@ def codeartifact_check_create_repo(args, client, repository, codeartifact_repos)
   """
   codeartifact_repo_exists = False
   for repo in codeartifact_repos['repositories']:
+    #logger.info(f"Repository {repo} found on codeartifact")
     if repo['name'] == repository:
       logger.info(f"Repository {repository} found on codeartifact")
       codeartifact_repo_exists = True
